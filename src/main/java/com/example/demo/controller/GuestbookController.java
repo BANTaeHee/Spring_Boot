@@ -46,7 +46,7 @@ public class GuestbookController {
         redirectAttributes.addFlashAttribute("msg",gno);
         return "redirect:/guestbook/list";
     }
-    @GetMapping({"/read", "/modify"})
+    @GetMapping({"/read", "/modify"})       // PageRequestDTO를 컨트롤러에서 @ModelAttribute를 이용해 'requestDTO'라는 이름으로 처리
     public void read(long gno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model) {
         log.info("gno: " + gno);
         GuestbookDTO dto = service.read(gno);
@@ -69,6 +69,8 @@ public class GuestbookController {
         service.modify(dto);
 
         redirectAttributes.addAttribute("page", requestDTO.getPage());
+        redirectAttributes.addAttribute("type", requestDTO.getType());
+        redirectAttributes.addAttribute("keyword", requestDTO.getKeyword());
         redirectAttributes.addAttribute("gno", dto.getGno());
 
         return "redirect:/guestbook/read";
