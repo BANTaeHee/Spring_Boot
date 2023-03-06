@@ -77,4 +77,9 @@ public class BoardRepositoryTests {
         Object[] arr = (Object[])result;
         System.out.println(Arrays.toString(arr));
     }
+    @Test
+    public void testSearch() {
+        boardRepository.search1();
+    }
+
 }
