@@ -18,6 +18,6 @@ public class Reply extends BaseEntity{
     private String text;
     private String replyer;
     // Board와 연관관계는 아직 작성하지 않음
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Board board; // 연관관계 지정
 }

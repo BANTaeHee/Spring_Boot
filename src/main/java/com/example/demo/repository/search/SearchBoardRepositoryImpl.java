@@ -110,7 +110,7 @@ public class SearchBoardRepositoryImpl extends QuerydslRepositorySupport impleme
             PathBuilder orderByExpression = new PathBuilder(Board.class, "board");
             tuple.orderBy(new OrderSpecifier(direction, orderByExpression.get(prop)));
         });
-        tuple.groupBy(board);
+        tuple.groupBy(board, member);
 
         // page 처리
         tuple.offset(pageable.getOffset());
